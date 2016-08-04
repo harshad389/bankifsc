@@ -32,15 +32,16 @@ $(function(){
 
     $('#ifsc_form').submit(function(){
         event.preventDefault();
-     
+        var ifsc_code=$('#ifsc_search').val();
+        
      $.ajax({
                       url:'http://localhost/bankifsc/home/get',
                       type: 'POST',
-                      dataType: 'json',
-                      data: $("#select_form").serialize(),
+                       dataType: 'html',
+                      data: {ifsc_code:ifsc_code},
                       success:function(data){
-
-                        alert(data);
+                         
+                         $('#ifsc_result').html(data).fadeIn(2000);
                       }
                   })
                 

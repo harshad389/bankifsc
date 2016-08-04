@@ -72,7 +72,11 @@
   </div>
 </div>
 <br>
+<div class="w3-row" id="ifsc_result" >
+</div>
+
 <?php if(isset($detail)): ?>
+  <br>
 <!-- row start 2 -->
 <div class="w3-row ">
   <!-- bank detail -->

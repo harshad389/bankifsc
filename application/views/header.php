@@ -44,6 +44,9 @@
   <div id="menuTut" class="myMenu">
   <div class="w3-container w3-padding-top">
     <h3>BANK</h3>
+    <form id="ifsc_form" url="<?php echo base_url(); ?>">
+    <input class="w3-input w3-validate" id="ifsc_search" type="text" placeholder="Enter IFSC Code" >
+    </form>
   </div>
   <a href="/html/default.asp"> IFSC CODE</a>
   <a href="/html/default.asp"> MICR CODE</a>
@@ -52,9 +55,7 @@
   <div id="menuRef" class="myMenu w3-padding-top" style="display:none">
   <div class="w3-container">
     <h3>INSURANCE</h3>
-    <form id="ifsc_form" url="<?php echo base_url(); ?>">
-    <input class="w3-input w3-validate" id="ifsc_search" type="text" placeholder="Enter IFSC Code" >
-    </form>
+    
   </div>
   <a href="/html/default.asp"> IFSC CODE</a>
   <a href="/html/default.asp"> MICR CODE</a>
