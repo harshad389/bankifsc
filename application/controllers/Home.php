@@ -84,7 +84,7 @@ class Home extends CI_Controller {
 
 	public function get(){
 		$ifsc=$this->input->post('ifsc_code');
-		$data=$this->db->where('ifsc',$ifsc)->get('bank')->row();
+		$data=$this->db->where('ifsc',$ifsc)->or_where('micr',$ifsc)->get('bank')->row();
 
 		if(isset($data)){
 			echo'<div class="w3-col m12 s12 l8 " >
@@ -114,15 +114,15 @@ class Home extends CI_Controller {
 			}
 			else
 			{
-				echo'<div class="w3-col m12 s12 l8 w3-pale-red" >
-			<div class="w3-card-4  ">
-				<header class="w3-container w3-light-grey">
-					<h3 >BANK DETAIL</h3>
-				</header>      
+				echo'<div class="w3-col m12 s5 l12 w3-pale-red"  >
+				<span onclick="close_div(this)" class="w3-closebtn w3-right">x</span>
+			<div class="w3-card-4  ">     
 				<ul class="w3-ul">     
-					<li class="w3-padding w3-hover-light-grey">
+					<li class="w3-padding w3-hover-light-grey w3-pale-red">
 					OPPS!!!! BANK DETAIL NOT FOUND 
+
 					</li>
+
 				</ul>
 				</div>';
 

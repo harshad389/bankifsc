@@ -1,5 +1,10 @@
 <div class="w3-main w3-container w3-padding-top" style="margin-left:250px;margin-top:130px;">
-<div class="w3-row  ">
+<div class="w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-row ">
+<div class="w3-row" id="ifsc_result">
+
+</div>
+<br>
   <div class="w3-col s12 m12 l12 w3-card-4  ">
    <header class="w3-container w3-light-grey">
     <h3 >SEARCH IFSC CODE</h3>
@@ -79,7 +84,7 @@
 <?php if(isset($detail)): ?>
   <br>
 <!-- row start 2 -->
-<div class="w3-row">
+<div class="w3-row" id="bank_detail">
   <!-- bank detail -->
   <div class="w3-col m12 s12 l8" >
     <div class="w3-card-4  ">

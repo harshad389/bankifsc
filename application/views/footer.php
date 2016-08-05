@@ -9,7 +9,7 @@
 </footer>
 
 <!-- END MAIN -->
-</div></div>
+</div>
 
 
 </body>
