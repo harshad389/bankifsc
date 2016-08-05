@@ -1,21 +1,22 @@
-<div class="w3-main w3-container w3-padding-top" style="margin-left:250px;margin-top:130px;">
+<div class="w3-main w3-container" style="margin-left:250px;margin-top:125px;">
 <div class="w3-row  ">
   <div class="w3-col s12 m12 l12 w3-card-4  ">
    <header class="w3-container w3-light-grey">
     <h3 >SEARCH IFSC CODE</h3>
       </header> 
-  <form id="select_form" action="<?php echo $this->config->item('base_url');?>" method="post">
+  <form id="select_form" name="bank" action="">
     <div class="w3-col s12 m12 l4 w3-padding">
     <label>Bank Name:</label>
-         <select id="bank"  name="bank" class="w3-select " onchange="this.form.submit()">
+         <select id="bank"  name="bank" class="w3-select " onchange="location.href=bank.options[selectedIndex].value">
           <option value="" disabled selected>Select Bank</option>
           <?php  foreach($bank as $r): ?>
             <option <?php if($_POST){
               if($r->bank==$this->input->post('bank'))
-                {echo "selected=selected";}} ?> ><?php echo $r->bank;?></option>
+                {echo "selected=selected";}} ?> value="<?php echo base_url();echo create_unique_url($r->bank);?>" ><?php echo $r->bank;?></option>
             <?php endforeach; ?>
           </select>
     </div>
+    </form>
     <div class="w3-col s12 m12 l2 w3-padding">
      <label>State Name:</label>
            <select id="state"  name="state" class="w3-select " onchange="this.form.submit()">
@@ -72,14 +73,13 @@
   </div>
 </div>
 <br>
-<div class="w3-row" id="ifsc_result">
-
+<div class="w3-row" id="ifsc_result" >
 </div>
 
 <?php if(isset($detail)): ?>
   <br>
 <!-- row start 2 -->
-<div class="w3-row">
+<div class="w3-row ">
   <!-- bank detail -->
   <div class="w3-col m12 s12 l8" >
     <div class="w3-card-4  ">
@@ -105,15 +105,14 @@
         </ul>
     </div>
     </div>
-   
 
     <!-- //Bank detail -->
-    <div class="w3-col m12 s12 l4 w3-padding-left w3-hide-small w3-hide-medium" >
+    <div class="w3-col m12 s12 l4 w3-padding-left" >
     <div class=" w3-card-4 ">
     <header class="w3-container w3-light-grey">
     <h3 ><?php echo $detail['bank']; ?></h3>
       </header>
-      
+      <div class="w3-container">
         <ul class="w3-ul">
          
           <li class="w3-padding w3-hover-light-grey">
@@ -129,7 +128,7 @@
             CONTACT NUMBER:<?php echo $detail['contact']; ?>
           </li>
         </ul>
-     
+      </div>
     </div>
     </div>
 
@@ -144,11 +143,13 @@
      <header class="w3-container w3-light-grey">
       <h3 >BANK LIST</h3>
     </header>
+
     <ul class="w3-ul w3-border">
-     <?php foreach($bank as $banklist): ?>  
-       <li class="w3-hover-light-grey"  onclick="this.form.submit()"><?php echo $banklist->bank; ?></li>
+     <?php foreach($bank as $banklist): ?>
+       <li class="w3-hover-light-grey"><?php echo $banklist->bank; ?></li>
      <?php endforeach; ?>
    </ul>
+
  </div>
 </div>
 
