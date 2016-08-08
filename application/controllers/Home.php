@@ -89,6 +89,7 @@ class Home extends CI_Controller {
 		if(isset($data)){
 			echo'<div class="w3-col m12 s12 l8 " >
 			<div class="w3-card-4  ">
+			<span onclick="close_div(this)" class="w3-closebtn w3-right "><i class="fa fa-remove w3-padding" style="font-size:15px;"></i></span>
 				<header class="w3-container w3-light-grey">
 					<h3 >'.$data->bank.'</h3>
 				</header>      
@@ -114,8 +115,8 @@ class Home extends CI_Controller {
 			}
 			else
 			{
-				echo'<div class="w3-col m12 s5 l12 w3-pale-red"  >
-				<span onclick="close_div(this)" class="w3-closebtn w3-right">x</span>
+				echo'<div class="w3-col m12 s12 l12 "  >
+				<span onclick="close_div(this)" class="w3-closebtn w3-right "><i class="fa fa-remove w3-padding" style="font-size:15px;"></i></span>
 			<div class="w3-card-4  ">     
 				<ul class="w3-ul">     
 					<li class="w3-padding w3-hover-light-grey w3-pale-red">

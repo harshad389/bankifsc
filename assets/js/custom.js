@@ -42,6 +42,7 @@ $(function(){
         var ifsc_code;
         var url=$('#url').val();
         if(ifsc_large.length==0){ifsc_code=ifsc_small;}else{ifsc_code=ifsc_large;}
+        if(ifsc_code.length!=0){
      $.ajax({
                       url:url+'home/get',
                       type: 'POST',
@@ -53,7 +54,9 @@ $(function(){
                       }
                   })
                 
-  });
+  }
+});
+
 });
 
          
