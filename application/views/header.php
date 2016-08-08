@@ -13,7 +13,7 @@
   <div id="main">
     <div class="w3-top">
       <!-- Side Navigation mobile -->
-      <nav class="w3-sidenav w3-white w3-card-2 w3-hide-large" style="display:none" id="mySidenav">
+      <nav class="w3-sidenav w3-white w3-card-2 w3-hide-large " style="display:none" id="mySidenav">
         <a href="javascript:void(0)" onclick="w3_close()" class="w3-xlarge w3-padding-large w3-hide-large w3-theme" title="close menu">Menu <span class="w3-right">&times;</span></a>
         <div class="inner-addon right-addon w3-padding-16">
           <input class="w3-input w3-border w3-animate-input "  id="ifsc_small"  type="text" placeholder="Enter Ifsc-Micr Code" required>
@@ -27,15 +27,15 @@
         <a href="#">Link 5</a>
       </nav>
       <!-- Side Navigation mobile -->
-
-
       <div class="w3-row w3-white">
         <div class="w3-half" style="margin:4px 0 6px 0"><a href='<?php echo base_url(); ?>'>
           <img width="280" height="40" src='<?php echo $this->config->item('images'); ?>logo.gif'></a></div>
           <div class="w3-half w3-wide w3-hide-medium w3-hide-small">  
             <div class="inner-addon right-addon w3-padding-8">
+            <form>    
               <button class="fa fa-search w3-btn  w3-theme ifsc_form"> </button>
-              <input class="w3-input w3-border w3-right ifsc_form " id="ifsc_large" type="text" placeholder="Search Bank By IFSC/MICR Code" style="width:50%" >
+              <input class="w3-input w3-border w3-right ifsc_form " id="ifsc_large" type="text"  placeholder="Search Bank By IFSC/MICR Code" style="width:50%" >
+              </form>
             </div>
           </div>
         </div>
@@ -44,9 +44,9 @@
           <li class="w3-opennav w3-left w3-hide-large">
             <a class="w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
           </li>
-          <li class="w3-hide-medium w3-hide-small"><a class="w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">HOME</a></li>
-          <li class="w3-hide-medium w3-hide-small"><a class="w3-hover-white w3-padding-16" href="javascript:void(0)" >Search By IFSC Code</a></li>
-          <li class="w3-hide-medium w3-hide-small"><a class="w3-hover-white w3-padding-16" href="javascript:void(0)" >Search By MICR Code</a></li>
+          <li class="w3-hide-medium w3-hide-small"><a class="w3-hover-white w3-padding-16" href="<?php echo base_url(); ?>">HOME</a></li>
+          <li class="w3-hide-medium w3-hide-small" onclick="attention()"><a class="w3-hover-white w3-padding-16" href="javascript:void(0)" >Search By IFSC Code</a></li>
+          <li class="w3-hide-medium w3-hide-small" onclick="attention()"><a class="w3-hover-white w3-padding-16" href="javascript:void(0)" >Search By MICR Code</a></li>
           <li class="w3-hide-medium w3-hide-small"><a class="w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">FAQ</a></li>
 
         </ul>
@@ -67,7 +67,7 @@
           <div id="menuRef" class="myMenu w3-padding-top" style="display:none">
            <div class="w3-accordion w3-light-grey">
             <button onclick="accordion('Demo1')" class="w3-btn-block w3-theme w3-left-align">What is IFSC Code?</button>
-            <div id="Demo1" class="w3-accordion-content w3-container w3-show">
+            <div id="Demo1" class="w3-accordion-content  w3-animate-zoom w3-container w3-show">
               <p>Indian Financial System Code (IFSC). It is used for electronic payment applications like Real Time Gross Settlement (RTGS), National Electronic Funds Transfer (NEFT), Immediate Payment Service, an interbank electronic instant mobile money transfer service (IMPS), and Centralised Funds Management System (CFMS) developed by Reserve Bank of India (RBI). Code has eleven characters "Alpha Numeric" in nature. First four characters represent bank, fifth character is default "0" left for future use and last six characters represent branch.</p>
             </div>
 

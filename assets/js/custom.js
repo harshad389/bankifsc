@@ -6,6 +6,7 @@ function w3_open() {
   document.getElementById("mySidenav").style.display = "block";
  document.getElementById("myOverlay").style.display = "block";
 }
+
 function w3_close() {
   document.getElementById("main").style.marginLeft = "0%";
   document.getElementById("mySidenav").style.display = "none";
@@ -28,13 +29,25 @@ function accordion(id) {
     }
 }
 
+function list_submit(type,val){
+
+ $('#'+type).val(val);$('#select_form').submit();
+}
+
+
 function close_div(e){
   e.parentElement.style.display="none";
 }
 
-$(function(){
+function attention(){
+  $( "#ifsc_large" ).effect( "shake" );$( "#ifsc_large" ).focus();
+}
 
-    $('.ifsc_form').on('submit focusout click' ,function(event){
+
+/* Start Search bank by ifsc */
+
+$(function(){
+    $('.ifsc_form').on('focusout submit click' ,function(event){
         event.preventDefault();
         w3_close();
         var ifsc_large=$('#ifsc_large').val();
@@ -58,8 +71,14 @@ $(function(){
 });
 
 });
+/* end Search bank by ifsc */
 
-         
+/* Start copy to clipboard */
+
+  var btns = document.querySelectorAll('button');
+    var clipboard = new Clipboard(btns);
+
+/* End copy to clipboard */         
                           
 
 

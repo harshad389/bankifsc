@@ -86,19 +86,23 @@
 <!-- row start 2 -->
 <div class="w3-row" id="bank_detail">
   <!-- bank detail -->
-  <div class="w3-col m12 s12 l8" >
+  <div class="w3-col m12 s12 l8 w3-animate-zoom" >
     <div class="w3-card-4  ">
       <header class="w3-container w3-light-grey">
     <h3 ><?php echo $detail['bank']; ?></h3>
       </header>      
         <ul class="w3-ul">     
-          <li class="w3-padding w3-hover-light-grey">
+          <li class="w3-padding w3-hover-light-grey w3-tooltip" >
             IFSC CODE:<?php echo $detail['ifsc']; ?>
+            <button class="w3-btn w3-text w3-hide-small  " onclick="$(this).text('Copied!')"  data-clipboard-text="<?php echo $detail['ifsc']; ?>">Copy</button>
+            <button class="w3-hide-large w3-right "  data-clipboard-text="<?php echo $detail['ifsc']; ?>"><i class="fa fa-files-o" aria-hidden="true"></i></button>
           </li>
-          <li class="w3-padding w3-hover-light-grey">
+          <li class="w3-padding w3-hover-light-grey w3-tooltip">
             MICR CODE:<?php echo $detail['micr']; ?>
+            <button class="w3-btn w3-text w3-hide-small " onclick="$(this).text('Copied!')"  data-clipboard-text="<?php echo $detail['micr']; ?>">Copy</button>
+            <button class="w3-hide-large w3-right "  data-clipboard-text="<?php echo $detail['micr']; ?>"><i class="fa fa-files-o" aria-hidden="true"></i></button>
           </li>
-          <li class="w3-padding w3-hover-light-grey">
+          <li class="w3-padding w3-hover-light-grey ">
             BRANCH NAME:<?php echo $detail['branch']; ?>
           </li>
           <li class="w3-padding w3-hover-light-grey">
@@ -114,27 +118,8 @@
 
     <!-- //Bank detail -->
     <div class="w3-col m12 s12 l4 w3-padding-left w3-hide-small w3-hide-medium" >
-    <div class=" w3-card-4 ">
-    <header class="w3-container w3-light-grey">
-    <h3 ><?php echo $detail['bank']; ?></h3>
-      </header>
-      
-        <ul class="w3-ul">
-         
-          <li class="w3-padding w3-hover-light-grey">
-            IFSC CODE:<?php echo $detail['ifsc']; ?>
-          </li>
-          <li class="w3-padding w3-hover-light-grey">
-            MICR CODE:<?php echo $detail['micr']; ?>
-          </li>
-          <li class="w3-padding w3-hover-light-grey">
-            BRANCH NAME:<?php echo $detail['branch']; ?>
-          </li>
-          <li class="w3-padding w3-hover-light-grey">
-            CONTACT NUMBER:<?php echo $detail['contact']; ?>
-          </li>
-        </ul>
-     
+    <div class=" w3-card-4 w3-center ">
+    <img class="w3-center" width="300" height="250" src="<?php echo $this->config->item('images'); ?>banner.png">
     </div>
     </div>
 
@@ -142,16 +127,16 @@
 <?php endif; ?>
 <!-- row 2 complete -->
 
-<?php if( isset($bank) && !isset($state) && !isset($district) &&  !isset($city) && !isset($branch) ): ?>
+<?php if( isset($bank) && empty($state)): ?>
   <br>
   <div class="w3-row">
-   <div class="w3-card-4">
+   <div class="w3-card-4 w3-animate-zoom">
      <header class="w3-container w3-light-grey">
       <h3 >BANK LIST</h3>
     </header>
     <ul class="w3-ul w3-border">
      <?php foreach($bank as $banklist): ?>  
-       <li class="w3-hover-light-grey"  onclick="this.form.submit()"><?php echo $banklist->bank; ?></li>
+       <li class="w3-hover-light-grey"  onclick="list_submit('bank','<?php echo $banklist->bank; ?>')"><?php echo $banklist->bank; ?></li>
      <?php endforeach; ?>
    </ul>
  </div>
@@ -159,18 +144,18 @@
 
 
 
-<?php elseif(isset($state) &&  !isset($district) &&  !isset($city) && !isset($branch) ): ?>
+<?php elseif(isset($state) &&  empty($district) ): ?>
   <br>
 
   <div class="w3-row">
-   <div class="w3-card-4">
+   <div class="w3-card-4 w3-animate-zoom">
      <header class="w3-container w3-light-grey">
       <h3 >STATE LIST</h3>
     </header>
 
     <ul class="w3-ul w3-border">
      <?php foreach($state as $statelist): ?>
-       <li class="w3-hover-light-grey"><?php echo $statelist->state; ?></li>
+       <li class="w3-hover-light-grey"  onclick="list_submit('state','<?php echo $statelist->state; ?>')"><?php echo $statelist->state; ?></li>
      <?php endforeach; ?>
    </ul>
 
@@ -179,17 +164,17 @@
 
 
 
-<?php elseif(isset($district) &&  !isset($city) && !isset($branch) ): ?>
+<?php elseif(isset($district) &&  empty($city) ): ?>
   <br>
   <div class="w3-row">
-   <div class="w3-card-4">
+   <div class="w3-card-4 w3-animate-zoom">
      <header class="w3-container w3-light-grey">
       <h3 >DISTRICT LIST</h3>
     </header>
 
     <ul class="w3-ul w3-border">
      <?php foreach($district as $districtlist): ?>
-       <li class="w3-hover-light-grey"><?php echo $districtlist->district; ?></li>
+       <li class="w3-hover-light-grey"  onclick="list_submit('district','<?php echo $districtlist->district; ?>')"><?php echo $districtlist->district; ?></li>
      <?php endforeach; ?>
    </ul>
 
@@ -197,7 +182,7 @@
 </div>
 
 
-<?php elseif(isset($city) &&  !isset($branch) ): ?>
+<?php elseif(isset($city) &&  empty($branch) ): ?>
   <br>
   <div class="w3-row">
    <div class="w3-card-4">
@@ -207,7 +192,7 @@
 
     <ul class="w3-ul w3-border">
      <?php foreach($city as $citylist): ?>
-       <li class="w3-hover-light-grey"><?php echo $citylist->city; ?></li>
+       <li class="w3-hover-light-grey" onclick="list_submit('city','<?php echo $citylist->city; ?>')"><?php echo $citylist->city; ?></li>
      <?php endforeach; ?>
    </ul>
 
@@ -225,7 +210,7 @@
 
     <ul class="w3-ul w3-border">
      <?php foreach($branch as $branchlist): ?>
-       <li class="w3-hover-light-grey"><?php echo $branchlist->branch; ?></li>
+       <li class="w3-hover-light-grey" onclick="list_submit('branch','<?php echo $branchlist->branch; ?>')"><?php echo $branchlist->branch; ?></li>
      <?php endforeach; ?>
    </ul>
 

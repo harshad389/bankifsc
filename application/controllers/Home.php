@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//Do your magic here
+		//$this->output->enable_profiler=true;
 	}
 	 /* Index Page for this controller.
 	 
@@ -24,6 +24,8 @@ class Home extends CI_Controller {
 	    if($bank=$this->input->post('bank'))
 	    {
 	    	 $data['state']=$this->db->select('state')->distinct()->where('bank',$bank)->order_by('state','ASC')->get('bank')->result();
+	    	  
+             
 	    }
 
 	    if( $state=$this->input->post('state') )
@@ -31,6 +33,7 @@ class Home extends CI_Controller {
 	    	$where = array('bank' => $bank,
 	    	 				'state'=>$state);
 	    	 $data['district']=$this->db->select('district')->distinct()->where($where)->order_by('district','ASC')->get('bank')->result();
+	    	 
 	    }
 
 	    if( $district=$this->input->post('district') )
@@ -40,6 +43,7 @@ class Home extends CI_Controller {
 	    	 				'state'=>$state,
 	    	 				'district'=>$district);
 	    	 $data['city']=$this->db->select('city')->distinct()->where($where)->order_by('city','ASC')->get('bank')->result();
+	    	 
 	    }
 
 	     if( $city=$this->input->post('city') )
@@ -51,6 +55,7 @@ class Home extends CI_Controller {
 	    	 				'district'=>$district,
 	    	 				'city'=>$city);
 	    	 $data['branch']=$this->db->select('branch')->distinct()->where($where)->order_by('branch','ASC')->get('bank')->result();
+	    	  
 	    }
 
 	     if($branch=$this->input->post('branch')  )
