@@ -20,8 +20,9 @@ li { cursor: pointer; }
 .right-addon input { padding-right: 30px; }
 
 /* base theme*/
-.w3-theme {color:#fff !important;background-color:#F09300 !important}
+.w3-theme {color:#fff !important;background-color:#EF9950 !important}
 .w3-btn {background-color:#4CAF50;margin-bottom:4px}
 .w3-code{border-left:4px solid #4CAF50}
 .myMenu {margin-bottom:150px}
+.w3-theme-blue{color:#fff !important;background-color:#9AD3DE !important}
 /*base theme close*/

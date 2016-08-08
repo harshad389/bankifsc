@@ -133,12 +133,12 @@ class Home extends CI_Controller {
 				</div>';
 
 			}
-
-
-
-
 			}
-
+public function faq()
+{$this->load->view('header');
+	$this->load->view('banking_faq');
+	$this->load->view('footer');
+}
 
 	
 }
