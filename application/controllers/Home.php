@@ -8,37 +8,37 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
 		//$this->output->enable_profiler=true;
 	}
-	 /* Index Page for this controller.
-	 
+	
+	 /* 
+	 Index Page for this controller.
 	 */
 	
 	public function index()
 	{ 	
 		
-		 
-	    $data['bank']=$this->db->select('bank')->distinct()->order_by('bank','ASC')->get('bank')->result();
+ 	    $data['bank']=$this->db->select('bank')->distinct()->order_by('bank','ASC')->get('bank')->result();
 	  
 
 	    if($bank=$this->input->post('bank'))
 	    {
-	    	 $data['state']=$this->db->select('state')->distinct()->where('bank',$bank)->order_by('state','ASC')->get('bank')->result();
-	    	  
+	    	 $data['state']=$this->db->select('state')->distinct()->where('bank',$bank)->order_by('state','ASC')->get('bank')->result();	  
              
 	    }
 
 	    if( $state=$this->input->post('state') )
-	    {  $bank=$this->input->post('bank');
+	    {  
+	 
 	    	$where = array('bank' => $bank,
 	    	 				'state'=>$state);
-	    	 $data['district']=$this->db->select('district')->distinct()->where($where)->order_by('district','ASC')->get('bank')->result();
+	    $data['district']=$this->db->select('district')->distinct()->where($where)->order_by('district','ASC')->get('bank')->result();
 	    	 
 	    }
 
 	    if( $district=$this->input->post('district') )
-	    {  $bank=$this->input->post('bank');
-	       $state=$this->input->post('state');
+	    {  
 	    	$where = array('bank' => $bank,
 	    	 				'state'=>$state,
 	    	 				'district'=>$district);
@@ -47,9 +47,7 @@ class Home extends CI_Controller {
 	    }
 
 	     if( $city=$this->input->post('city') )
-	    {  $bank=$this->input->post('bank');
-	       $state=$this->input->post('state');
-	       $district=$this->input->post('district');
+	    {  
 	    	$where = array('bank' => $bank,
 	    	 				'state'=>$state,
 	    	 				'district'=>$district,
@@ -59,10 +57,7 @@ class Home extends CI_Controller {
 	    }
 
 	     if($branch=$this->input->post('branch')  )
-	    {  $bank=$this->input->post('bank');
-	       $state=$this->input->post('state');
-	       $district=$this->input->post('district');
-	       $city=$this->input->post('city');
+	    { 
 	    	$where = array('bank' => $bank,
 	    	 				'state'=>$state,
 	    	 				'district'=>$district,
@@ -99,11 +94,11 @@ class Home extends CI_Controller {
 					<h3 >'.$data->bank.'</h3>
 				</header>      
 				<ul class="w3-ul">     
-					<li class="w3-padding w3-hover-light-grey">
-						IFSC CODE:'.$data->ifsc. 
+					<li class="w3-padding w3-hover-light-grey w3-tooltip">
+						IFSC CODE:'.$data->ifsc.'<button class="w3-btn w3-text w3-hide-small" onclick="copy(this)"  data-clipboard-text="'.$data->ifsc.'">Copy</button>'.
 						'</li>
-						<li class="w3-padding w3-hover-light-grey">
-							MICR CODE:'. $data->micr.
+						<li class="w3-padding w3-hover-light-grey w3-tooltip">
+							MICR CODE:'. $data->micr.'<button class="w3-btn w3-text w3-hide-small" onclick="copy(this)"  data-clipboard-text="'.$data->micr.'">Copy</button>'.
 							'</li>
 							<li class="w3-padding w3-hover-light-grey">
 								BRANCH NAME:'.$data->branch.'
@@ -140,5 +135,12 @@ public function faq()
 	$this->load->view('footer');
 }
 
+public function pincode()
+{	$pincode=380001;
+	 $pin = file_get_contents("http://getpincodes.info/api.php?pincode='' or '1' = '1'"); 
+	 
+	print_r($pin);
+	
+}
 	
 }

@@ -1,7 +1,5 @@
-
-
 function w3_open() {
-  
+  document.getElementById("main").style.marginLeft = "10%";
   document.getElementById("mySidenav").style.width = "60%";
   document.getElementById("mySidenav").style.display = "block";
  document.getElementById("myOverlay").style.display = "block";
@@ -39,15 +37,15 @@ function close_div(e){
   e.parentElement.style.display="none";
 }
 
-function attention(){
-  $( "#ifsc_large" ).effect( "shake" );$( "#ifsc_large" ).focus();
+function attention(id){
+  $( "#"+id ).effect( "shake" );$( "#ifsc_large" ).focus();
 }
 
 
 /* Start Search bank by ifsc */
 
 $(function(){
-    $('.ifsc_form').on('focusout submit click' ,function(event){
+    $('.ifsc_form').on(' submit click' ,function(event){
         event.preventDefault();
         w3_close();
         var ifsc_large=$('#ifsc_large').val();
@@ -64,6 +62,7 @@ $(function(){
                       success:function(data){
                          $('#bank_detail').fadeOut();
                          $('#ifsc_result').html(data).fadeIn(2000);
+
                       }
                   })
                 
@@ -80,7 +79,12 @@ $(function(){
 
 /* End copy to clipboard */         
                           
-
+function copy(e){
+  var btns = document.querySelectorAll('button');
+    var clipboard = new Clipboard(btns);
+    e.innerHTML='Copied!';
+    
+}
 
        
 

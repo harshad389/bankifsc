@@ -1,7 +1,7 @@
-  <script src="<?php echo $this->config->item('js_path'); ?>/jquery.min.js"></script>
-  <script src="<?php echo $this->config->item('js_path'); ?>/jquery-ui.min.js" ></script>
-   <script src="<?php echo $this->config->item('js_path'); ?>/clipboard.min.js"></script>
-  <script src="<?php echo $this->config->item('js_path'); ?>/custom.js"></script>
+  <script async="async" src="<?php echo $this->config->item('js_path'); ?>/jquery.min.js"></script>
+  <script async="async" src="<?php echo $this->config->item('js_path'); ?>/jquery-ui.min.js" ></script>
+   <script async="async" src="<?php echo $this->config->item('js_path'); ?>/clipboard.min.js"></script>
+  <script async="async" src="<?php echo $this->config->item('js_path'); ?>/custom.js"></script>
  
   <footer class="w3-container w3-section w3-padding-32 w3-card-4  w3-center w3-opacity">
   	<p><nav>
